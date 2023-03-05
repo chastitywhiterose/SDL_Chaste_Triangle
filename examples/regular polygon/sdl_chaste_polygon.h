@@ -73,6 +73,26 @@ void chaste_polygon_points()
 /* large array for any possible combination of vertices to make many triangles*/
 SDL_Vertex vertices[0x1000];
 
+
+/*
+ this function doesn't draw anything but instead modifies the colors of the vertices to make
+ really awesome looking polygons if called before the drawing loop
+*/
+void chaste_triangle_color_rgb()
+{
+ vertices[0].color.r=255;
+ vertices[0].color.g=0;
+ vertices[0].color.b=0;
+ vertices[1].color.r=0;
+ vertices[1].color.g=255;
+ vertices[1].color.b=0;
+ vertices[2].color.r=0;
+ vertices[2].color.g=0;
+ vertices[2].color.b=255;
+}
+
+
+
 /*this first function draws a series of triangles to make a convex regular polygon*/
 void chaste_polygon_draw()
 {
@@ -121,6 +141,8 @@ void chaste_polygon_draw_star()
  vertices[0].color=main_polygon.color;
  vertices[1].color=main_polygon.color;
  vertices[2].color=main_polygon.color;
+ 
+ chaste_triangle_color_rgb();
  
  i=0;
  while(i<main_polygon.sides)

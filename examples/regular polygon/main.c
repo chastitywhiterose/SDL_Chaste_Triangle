@@ -24,8 +24,8 @@ int main(int argc, char** argv)
 	
  init_polygon();
  main_polygon.radius=350;
- main_polygon.sides=5;
- main_polygon.step=2;
+ main_polygon.sides=3;
+ main_polygon.step=1;
 
  delay=1000/fps;
  loop=1;
