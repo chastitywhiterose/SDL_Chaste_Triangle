@@ -111,7 +111,7 @@ void chaste_polygon_draw()
 
 /*
  this first function draws a series of triangles to make any kind of regular polygon
- this includes star polygons by taking into account the step value between points
+ this includes star polygons by taking into account the step value between points.
 */
 void chaste_polygon_draw_star()
 {
@@ -142,4 +142,44 @@ void chaste_polygon_draw_star()
  
 }
 
+
+
+
+/*
+ this first function draws a series of lines to make an outline of any regular polygon
+ this includes star polygons by taking into account the step value between points.
+*/
+void chaste_polygon_draw_lines()
+{
+ int i,i1;
+ chaste_polygon_points();
+ SDL_SetRenderDrawColor(renderer,main_polygon.color.r,main_polygon.color.g,main_polygon.color.b,255);
+ i=0;
+ while(i<main_polygon.sides)
+ {
+  i1=(i+1)%main_polygon.sides;
+  SDL_RenderDrawLine(renderer,polygon_xpoints[i], polygon_ypoints[i], polygon_xpoints[i1], polygon_ypoints[i1]);
+  i++;
+ }
+}
+
+
+
+/*
+ this first function draws a series of lines to make an outline of any regular polygon
+ this includes star polygons by taking into account the step value between points.
+*/
+void chaste_polygon_draw_star_lines()
+{
+ int i,i1;
+ chaste_polygon_points();
+ SDL_SetRenderDrawColor(renderer,main_polygon.color.r,main_polygon.color.g,main_polygon.color.b,255);
+ i=0;
+ while(i<main_polygon.sides)
+ {
+  i1=(i+main_polygon.step)%main_polygon.sides;
+  SDL_RenderDrawLine(renderer,polygon_xpoints[i], polygon_ypoints[i], polygon_xpoints[i1], polygon_ypoints[i1]);
+  i++;
+ }
+}
 

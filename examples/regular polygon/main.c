@@ -22,8 +22,6 @@ int main(int argc, char** argv)
  renderer = SDL_CreateRenderer(window,-1,0);
  if(renderer==NULL){printf( "Renderer could not be created! SDL_Error: %s\n", SDL_GetError() );return -1;}
 	
- SDL_SetRenderDrawColor(renderer,0,0,0,255);
-
  init_polygon();
  main_polygon.radius=350;
  main_polygon.sides=5;
@@ -36,9 +34,11 @@ int main(int argc, char** argv)
   sdl_time = SDL_GetTicks();
   sdl_time1 = sdl_time+delay;
  
+  SDL_SetRenderDrawColor(renderer,0,0,0,255);
   SDL_RenderClear(renderer);
 
   chaste_polygon_draw_star();
+  /*chaste_polygon_draw_star_lines();*/
  
   main_polygon.radians+=PI/180;
 
