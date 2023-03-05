@@ -24,8 +24,6 @@ int main(int argc, char** argv)
 	
  SDL_SetRenderDrawColor(renderer,0,0,0,255);
 
-
-
  init_polygon();
  main_polygon.radius=350;
  main_polygon.sides=5;
@@ -40,7 +38,7 @@ int main(int argc, char** argv)
  
   SDL_RenderClear(renderer);
 
-  chaste_polygon_draw();
+  chaste_polygon_draw_star();
  
   main_polygon.radians+=PI/180;
 
