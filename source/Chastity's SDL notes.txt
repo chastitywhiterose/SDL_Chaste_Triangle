@@ -1,0 +1,53 @@
+I have been able to compile my SDL programs flawlessly on Linux.
+I always use the following command:
+
+gcc -Wall -ansi -pedantic main.c -o main `sdl2-config --cflags --libs` -lm && ./main
+
+Everything works on Linux because I installed SDL through the package manager and all dependencies are included.
+
+But on Windows things get a little bit more tricky. Windows does not operate as a development environment the same way at all. Here is what I did in order to get it running on Windows 10 for my own convenience when compiling SDL programs for Windows after I have already finished developing them on Linux.
+
+My first method was installing msys2 and then installing all required tools through the pacman package manager. It was not too hard and it does indeed work at getting my SDL programs compiled. But I was looking for something a little bit more minimalistic.
+
+First I installed mingw-w64 to get a working modern version of the gcc compiler.
+
+The website with a lot of info is:
+https://www.mingw-w64.org/
+
+And where I downloaded from was here:
+https://winlibs.com/https://winlibs.com/
+
+Specifically the file at the time I got was "winlibs-x86_64-posix-seh-gcc-12.2.0-mingw-w64ucrt-10.0.0-r4".
+
+So then I put the mingw64 folder in C:\
+
+So my installation directory is C:\mingw64
+
+So to set the required path when in a Windows command prompt, I run:
+
+SET PATH=C:\mingw64\bin
+
+This gives a working gcc compiler.
+
+But I also downloaded the mingw development libraries for SDL. The file I downloaded was
+"SDL2-devel-2.26.3-mingw.zip"
+
+I have them installed at:
+C:\SDL\SDL2-2.26.3\x86_64-w64-mingw32
+
+This means that through one very long command, it is possible to compile and run my programs like this:
+
+gcc -Wall -ansi -pedantic main.c -o main -IC:\SDL\SDL2-2.26.3\x86_64-w64-mingw32\include\SDL2 -LC:\SDL\SDL2-2.26.3\x86_64-w64-mingw32\lib -lmingw32 -lSDL2main -lSDL2 -mwindows && main
+
+But in most cases I use a special script I wrote for my convenience. It is as follows.
+------
+SET COMPILER_PATH=C:\mingw64\bin
+SET SDL_PATH=C:\SDL\SDL2-2.26.3\x86_64-w64-mingw32
+SET PATH=%COMPILER_PATH%;%SDL_PATH%\bin
+
+gcc -Wall -ansi -pedantic main.c -o main -I%SDL_PATH%\include\SDL2 -L%SDL_PATH%\lib -lmingw32 -lSDL2main -lSDL2 -mwindows && main
+------
+
+My script solves the problem of not only setting the correct paths so compiling on Windows is possible, but it also sets the path to include where SDL2.dll is so that it is found when running the program. Of course the dll  must still be copied into the same folder as my finished project when I distribute it to other people.
+
+And with all that work, my development environment for C with SDL on Windows is complete and I can use it faster than having to boot up msys2.
