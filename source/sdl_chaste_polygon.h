@@ -91,7 +91,7 @@ void chaste_triangle_color_rgb()
  vertices[2].color.b=255;
 }
 
-
+SDL_Color temp_color;
 
 /*this first function draws a series of triangles to make a convex regular polygon*/
 void chaste_polygon_draw()
@@ -158,7 +158,12 @@ void chaste_polygon_draw_star()
   vertices[2].position.y=main_polygon.cy;
   
   SDL_RenderGeometry(renderer,NULL,vertices,3,NULL,0);
-  
+
+  /*swap colors around to show off*/  
+  temp_color=vertices[0].color;
+  vertices[0].color=vertices[1].color;
+  vertices[1].color=vertices[2].color;
+  vertices[2].color=temp_color;
   i++;
  }
  
