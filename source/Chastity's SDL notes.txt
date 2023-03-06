@@ -51,3 +51,7 @@ gcc -Wall -ansi -pedantic main.c -o main -I%SDL_PATH%\include\SDL2 -L%SDL_PATH%\
 My script solves the problem of not only setting the correct paths so compiling on Windows is possible, but it also sets the path to include where SDL2.dll is so that it is found when running the program. Of course the dll  must still be copied into the same folder as my finished project when I distribute it to other people.
 
 And with all that work, my development environment for C with SDL on Windows is complete and I can use it faster than having to boot up msys2.
+
+Also, this DOS/Windows command line guide is super helpful when learning how to use variables in scripts.
+
+http://steve-jansen.github.io/guides/windows-batch-scripting/part-2-variables.html
