@@ -36,8 +36,8 @@ int main(int argc, char** argv)
  main_font=font_8;
 	
  init_polygon();
- main_polygon.radius=300;
- main_polygon.sides=3;
+ main_polygon.radius=350;
+ main_polygon.sides=24;
  main_polygon.step=1;
 
  chaste_palette_rainbow(40);
@@ -53,10 +53,10 @@ int main(int argc, char** argv)
   SDL_SetRenderDrawColor(renderer,0,0,0,255);
   SDL_RenderClear(renderer);
 
-  sprintf(text,"A really awesome SDL_RenderGeometry example written by Chastity White Rose");
+  sprintf(text,"SDL_RenderGeometry example by Chastity White Rose");
   chaste_font_draw_string(text,main_font.char_width*1,height-main_font.char_height*4);
 
-  sprintf(text,"Chastity's Triangle");
+  sprintf(text,"Chastity\nWhite\nRose");
   chaste_font_draw_string_scaled(text,main_font.char_width*4,main_font.char_height*1,4);
 
   /*chaste_polygon_draw_star();*/
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
   set_tri_color(128,128,128);
   /*FillTriangle_Rainbow(100,100,100,400,400,400);*/
 
-FillTriangle_Rainbow_Regular(100,100,100,400,400,400);
+FillTriangle_Rainbow_Regular();
 
  
   /*main_polygon.radians+=PI/180;*/

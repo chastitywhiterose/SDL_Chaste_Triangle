@@ -102,7 +102,7 @@ void FillTriangle_Rainbow_Regular()
  vertices[0].color=tri_color;
 
  /*second color*/
- index1=(chaste_palette_index+(chaste_palette_length/3))%chaste_palette_length;
+ index1=(chaste_palette_index+(chaste_palette_length/main_polygon.sides))%chaste_palette_length;
  pixel=chaste_palette[index1];
  tri_color.r=(pixel&0xFF0000)>>16;
  tri_color.g=(pixel&0x00FF00)>>8;
@@ -110,7 +110,7 @@ void FillTriangle_Rainbow_Regular()
  vertices[1].color=tri_color;
 
  /*third color*/
- index2=(index1+(chaste_palette_length/3))%chaste_palette_length;
+ index2=(index1+(chaste_palette_length/main_polygon.sides))%chaste_palette_length;
  pixel=chaste_palette[index2];
  tri_color.r=(pixel&0xFF0000)>>16;
  tri_color.g=(pixel&0x00FF00)>>8;
