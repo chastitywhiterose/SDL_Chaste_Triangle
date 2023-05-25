@@ -13,6 +13,8 @@ SDL_Event e;
 char text[0x200];
 
 #include "sdl_chaste_polygon.h"
+#include "chaste_the_rainbow.h"
+#include "chaste_the_rainbow_triangle.h"
 #include "sdl_chastefont_texture.h"
 
 int main(int argc, char** argv)
@@ -38,6 +40,9 @@ int main(int argc, char** argv)
  main_polygon.sides=3;
  main_polygon.step=1;
 
+ chaste_palette_rainbow(40);
+ /*chaste_palette_view();*/
+
  delay=1000/fps;
  loop=1;
  while(loop) /*wait until any key is pressed and then released*/
@@ -52,22 +57,31 @@ int main(int argc, char** argv)
   chaste_font_draw_string(text,main_font.char_width*1,height-main_font.char_height*4);
 
   sprintf(text,"Chastity's Triangle");
-  chaste_font_draw_string_scaled(text,main_font.char_width*4,main_font.char_height*1,8);
+  chaste_font_draw_string_scaled(text,main_font.char_width*4,main_font.char_height*1,4);
 
-  chaste_polygon_draw_star();
+  /*chaste_polygon_draw_star();*/
   /*chaste_polygon_draw_star_lines();*/
+
+  set_tri_color(128,128,128);
+  /*FillTriangle_Rainbow(100,100,100,400,400,400);*/
+
+FillTriangle_Rainbow_Regular(100,100,100,400,400,400);
+
  
-  main_polygon.radians+=PI/180;
+  /*main_polygon.radians+=PI/180;*/
 
   SDL_RenderPresent(renderer);
   
-  SDL_PollEvent( &e );
-  if( e.type == SDL_QUIT ){loop=0;}
-  if(e.type == SDL_KEYUP)
+/*test for events and only process if they exist*/
+  while(SDL_PollEvent(&e))
   {
-   if(e.key.keysym.sym==SDLK_ESCAPE){loop=0;}
+   if( e.type == SDL_QUIT ){loop=0;}
+   if(e.type == SDL_KEYUP)
+   {
+    if(e.key.keysym.sym==SDLK_ESCAPE){loop=0;}
+   }
   }
-  
+
   while(sdl_time<sdl_time1)
   {
    sdl_time=SDL_GetTicks();

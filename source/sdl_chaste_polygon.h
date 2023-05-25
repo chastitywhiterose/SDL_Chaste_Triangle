@@ -142,7 +142,7 @@ void chaste_polygon_draw_star()
  vertices[1].color=main_polygon.color;
  vertices[2].color=main_polygon.color;
  
- chaste_triangle_color_rgb();
+ /*chaste_triangle_color_rgb();*/
  
  i=0;
  while(i<main_polygon.sides)
@@ -160,10 +160,10 @@ void chaste_polygon_draw_star()
   SDL_RenderGeometry(renderer,NULL,vertices,3,NULL,0);
 
   /*swap colors around to show off*/  
-  temp_color=vertices[0].color;
+/*  temp_color=vertices[0].color;
   vertices[0].color=vertices[1].color;
   vertices[1].color=vertices[2].color;
-  vertices[2].color=temp_color;
+  vertices[2].color=temp_color;*/
   i++;
  }
  
